@@ -81,12 +81,12 @@ fun PermissionRequestUI(permissionDenied: Boolean, onRetry: () -> Unit) {
 
 @Composable
 fun TunerContent() {
-    var frequency by remember { mutableStateOf(440f) }
-    var note by remember { mutableStateOf("A") }
-    var octave by remember { mutableStateOf(4) }
-    var deviation by remember { mutableStateOf(0f) }
-    var semitone by remember { mutableStateOf(0f) }
-    var cents by remember { mutableStateOf(0f) }
+    var frequency by remember { mutableFloatStateOf(0f) }
+    var note by remember { mutableStateOf("") }
+    var octave by remember { mutableIntStateOf(0) }
+    var deviation by remember { mutableFloatStateOf(0f) }
+    var semitone by remember { mutableFloatStateOf(0f) }
+    var cents by remember { mutableFloatStateOf(0f) }
 
     // Initialize audio processing when permission is granted
     DisposableEffect(Unit) {

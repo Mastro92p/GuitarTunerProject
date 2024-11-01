@@ -34,7 +34,7 @@ object AudioProcessor {
         val pitchDetectionHandler = PitchDetectionHandler { result, _ ->
             val frequency = result.pitch
 
-            if (frequency > 0) { // Filter out erroneous frequencies
+            if (frequency > 27.5 &&  frequency < 6644.88) { // Filter out erroneous frequencies  freq < 27.5 || freq > 6644.88
                 // Convert frequency to note information
                 val data = getFrequencyData(frequency)
                 onFrequencyDetected(data)
@@ -78,7 +78,7 @@ object AudioProcessor {
         val notes = listOf("A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#")
         // Handle frequencies below the minimum threshold
         if (freq < 27.5 || freq > 6644.88) {
-            return Pair("0", 0f) // or return an appropriate default value
+            return Pair("", 0f) // or return an appropriate default value
         }
         // Calculate the note number based on the frequency
         var noteNumber = 12 * log2(freq / 440) + 49
