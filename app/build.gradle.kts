@@ -58,4 +58,5 @@ dependencies {
     implementation("androidx.compose.animation:animation:1.4.0")
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
 
+
 }
